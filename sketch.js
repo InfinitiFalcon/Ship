@@ -6,18 +6,20 @@ function preload(){
 
 function setup(){
   createCanvas(400,400);
-  
+  sea = createSprite(200, 150, 50, 50)
+  sea.addImage("sea", seabg)
+  sea.velocityX = -5
+  sea.scale = 0.3
+  ship = createSprite(200, 200, 50, 50)
+  ship.addAnimation("ship", shipmoving)
+  ship.scale = 0.25
 }
 
 function draw() {
   background("blue");
-  sea = createSprite(200, 200, 50, 50)
-  sea.addImage(seabg)
-  sea.velocityX = 2
-  if(sea.x > 400){
-    sea.x = 200
+  
+  if(sea.x < 0){
+    sea.x = width/8
   }
-  ship = createSprite(200, 200, 50, 50)
-  ship.addAnimation(shipmoving)
-
+  drawSprites()
 }
